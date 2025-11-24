@@ -60,7 +60,7 @@ body.dark-mode {
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
+    background:
         radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.08) 0%, transparent 50%);
     opacity: 0.5;
@@ -69,7 +69,7 @@ body.dark-mode {
 .auth-container {
     background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
     border-radius: 20px;
-    box-shadow: 
+    box-shadow:
         0 25px 50px rgba(0, 0, 0, 0.5),
         0 0 0 1px rgba(212, 175, 55, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -99,7 +99,7 @@ body.dark-mode {
 
 body.dark-mode .auth-container {
     background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
-    box-shadow: 
+    box-shadow:
         0 25px 50px rgba(0, 0, 0, 0.7),
         0 0 0 1px rgba(212, 175, 55, 0.3);
 }
@@ -229,7 +229,7 @@ body.dark-mode .input-field:focus {
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 
+    box-shadow:
         0 4px 15px rgba(212, 175, 55, 0.4),
         0 0 20px rgba(212, 175, 55, 0.2);
     display: flex;
@@ -259,7 +259,7 @@ body.dark-mode .input-field:focus {
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 
+    box-shadow:
         0 6px 25px rgba(212, 175, 55, 0.6),
         0 0 30px rgba(212, 175, 55, 0.3);
 }
@@ -427,7 +427,7 @@ body.dark-mode .icon-btn {
 .card {
     background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
     border-radius: 16px;
-    box-shadow: 
+    box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.4),
         0 0 0 1px rgba(212, 175, 55, 0.15);
     padding: 24px;
@@ -442,7 +442,7 @@ body.dark-mode .card {
 }
 
 .card:hover {
-    box-shadow: 
+    box-shadow:
         0 12px 40px rgba(0, 0, 0, 0.5),
         0 0 0 1px rgba(212, 175, 55, 0.3);
     border-color: rgba(212, 175, 55, 0.4);
@@ -589,7 +589,7 @@ body.dark-mode .select-field {
 .post-card {
     background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
     border-radius: 16px;
-    box-shadow: 
+    box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.4),
         0 0 0 1px rgba(212, 175, 55, 0.15);
     padding: 24px;
@@ -603,7 +603,7 @@ body.dark-mode .post-card {
 }
 
 .post-card:hover {
-    box-shadow: 
+    box-shadow:
         0 12px 40px rgba(0, 0, 0, 0.5),
         0 0 0 1px rgba(212, 175, 55, 0.35);
     border-color: rgba(212, 175, 55, 0.4);
@@ -744,10 +744,23 @@ body.dark-mode .like-btn.liked {
 }
 
 @keyframes heartBeat {
-    0%, 100% { transform: scale(1); }
-    25% { transform: scale(1.2); }
-    50% { transform: scale(0.95); }
-    75% { transform: scale(1.1); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.2);
+    }
+
+    50% {
+        transform: scale(0.95);
+    }
+
+    75% {
+        transform: scale(1.1);
+    }
 }
 
 /* Empty State */
@@ -864,40 +877,40 @@ body.dark-mode .modal-content {
     .auth-container {
         padding: 32px 24px;
     }
-    
+
     .gradient-text {
         font-size: 1.75rem;
     }
-    
+
     .header .gradient-text {
         font-size: 1.25rem;
     }
-    
+
     .header-content {
         padding: 14px 16px;
     }
-    
+
     .user-name {
         display: none;
     }
-    
+
     .main-content {
         padding: 20px 16px;
     }
-    
+
     .card {
         padding: 20px;
     }
-    
+
     .search-filter-container {
         flex-direction: column;
     }
-    
+
     .search-box {
         width: 100%;
         min-width: 100%;
     }
-    
+
     .modal-content {
         padding: 24px;
     }
@@ -907,23 +920,22 @@ body.dark-mode .modal-content {
     .auth-screen {
         padding: 16px;
     }
-    
+
     .auth-container {
         padding: 24px 20px;
     }
-    
+
     .header-actions {
         gap: 8px;
     }
-    
+
     .btn-logout {
         padding: 8px 12px;
         font-size: 0.8rem;
     }
 }
-/* ============================
-   IMAGE UPLOAD SECTION STYLING
-===============================*/
+
+/* IMAGE UPLOAD SECTION STYLING*/
 
 .image-upload-section {
     margin-top: 18px;
@@ -1074,9 +1086,8 @@ body.dark-mode .modal-content {
     background: rgba(255, 77, 77, 0.2);
     box-shadow: 0 0 12px rgba(255, 77, 77, 0.4);
 }
-/* ===================================
-   RESPONSIVE IMAGE UPLOAD SECTION
-=================================== */
+
+/* RESPONSIVE IMAGE UPLOAD SECTION  */
 
 /* Container responsiveness */
 .image-upload-section {
@@ -1144,9 +1155,8 @@ body.dark-mode .modal-content {
     font-size: 0.85rem;
 }
 
-/* ================================
-   DEVICES UNDER 768px
-================================ */
+/* 
+=========DEVICES UNDER 768px=========== */
 @media (max-width: 768px) {
 
     .upload-tabs {
@@ -1163,9 +1173,7 @@ body.dark-mode .modal-content {
     }
 }
 
-/* ================================
-   DEVICES UNDER 480px (Phones)
-================================ */
+/* DEVICES UNDER 480px (Phones)*/
 @media (max-width: 480px) {
 
     /* Tabs stack vertically */
@@ -1211,9 +1219,8 @@ body.dark-mode .modal-content {
     }
 }
 
-/* ================================
-   ULTRA SMALL DEVICES (320px)
-================================ */
+
+   /* ======ULTRA SMALL DEVICES (320px)===== */
 @media (max-width: 360px) {
 
     .drag-drop-area {

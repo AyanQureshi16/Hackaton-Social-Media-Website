@@ -124,34 +124,34 @@ function handleSignup() {
 
     // Validation
     if (!name || !email || !password || !confirmPassword) {
-        alert('❌ Please fill in all fields!');
+        alert('Please fill in all fields!');
         return;
     }
 
     if (!isValidName(name)) {
-        alert('❌ Name must be at least 2 characters long!');
+        alert('Name must be at least 2 characters long!');
         return;
     }
 
     if (!isValidEmail(email)) {
-        alert('❌ Please enter a valid email address!');
+        alert('Please enter a valid email address!');
         return;
     }
 
     if (!isValidPassword(password)) {
-        alert('❌ Password must be at least 6 characters long!');
+        alert('Password must be at least 6 characters long!');
         return;
     }
 
     if (password !== confirmPassword) {
-        alert('❌ Passwords do not match! Please try again.');
+        alert('Passwords do not match! Please try again.');
         return;
     }
 
     // Check if user already exists
     const userExists = registeredUsers.find(user => user.email === email);
     if (userExists) {
-        alert('❌ User with this email already exists! Please login.');
+        alert('User with this email already exists! Please login.');
         toggleAuthForm(); // Switch to login form
         document.getElementById('loginEmail').value = email;
         return;
@@ -181,7 +181,7 @@ function handleSignup() {
     document.getElementById('signupPassword').value = '';
     document.getElementById('signupConfirmPassword').value = '';
 
-    alert('✅ Account created successfully!');
+    alert('Account created successfully!');
     showMainApp();
 }
 
@@ -191,12 +191,12 @@ function handleLogin() {
 
     // Validation
     if (!email || !password) {
-        alert('❌ Please fill in all fields!');
+        alert('Please fill in all fields!');
         return;
     }
 
     if (!isValidEmail(email)) {
-        alert('❌ Please enter a valid email address!');
+        alert('Please enter a valid email address!');
         return;
     }
 
@@ -204,7 +204,7 @@ function handleLogin() {
     const user = registeredUsers.find(u => u.email === email);
     
     if (!user) {
-        alert('❌ No account found with this email! Please signup first.');
+        alert('No account found with this email! Please signup first.');
         toggleAuthForm(); // Switch to signup form
         document.getElementById('signupEmail').value = email;
         return;
@@ -212,7 +212,7 @@ function handleLogin() {
 
     // Check password
     if (user.password !== password) {
-        alert('❌ Incorrect password! Please try again.');
+        alert('Incorrect password! Please try again.');
         return;
     }
 
@@ -228,7 +228,7 @@ function handleLogin() {
     document.getElementById('loginEmail').value = '';
     document.getElementById('loginPassword').value = '';
 
-    alert('✅ Login successful! Welcome back, ' + user.name + '!');
+    alert('Login successful! Welcome back, ' + user.name + '!');
     showMainApp();
 }
 
@@ -262,23 +262,23 @@ function createPost() {
 
     // Validation
     if (!text) {
-        alert('❌ Please write something in your post!');
+        alert('Please write something in your post!');
         return;
     }
 
     if (text.length < 3) {
-        alert('❌ Post must be at least 3 characters long!');
+        alert('Post must be at least 3 characters long!');
         return;
     }
 
     if (text.length > 5000) {
-        alert('❌ Post is too long! Maximum 5000 characters allowed.');
+        alert('Post is too long! Maximum 5000 characters allowed.');
         return;
     }
 
     // Validate image URL if provided
     if (image && !isValidURL(image)) {
-        alert('❌ Please enter a valid image URL!');
+        alert(' Please enter a valid image URL!');
         return;
     }
 
@@ -300,7 +300,7 @@ function createPost() {
     document.getElementById('postText').value = '';
     document.getElementById('postImage').value = '';
 
-    alert('✅ Post created successfully!');
+    alert('Post created successfully!');
     renderPosts();
 }
 
@@ -319,15 +319,15 @@ function deletePost(postId) {
     
     // Check if user owns this post
     if (post.authorEmail !== currentUser.email) {
-        alert('❌ You can only delete your own posts!');
+        alert(' You can only delete your own posts!');
         return;
     }
 
-    if (confirm('⚠️ Are you sure you want to delete this post?')) {
+    if (confirm('Are you sure you want to delete this post?')) {
         posts = posts.filter(post => post.id !== postId);
         savePosts();
         renderPosts();
-        alert('✅ Post deleted successfully!');
+        alert('Post deleted successfully!');
     }
 }
 
@@ -345,13 +345,13 @@ function openEditModal(postId) {
     const post = posts.find(p => p.id === postId);
     
     if (!post) {
-        alert('❌ Post not found!');
+        alert('Post not found!');
         return;
     }
 
     // Check if user owns this post
     if (post.authorEmail !== currentUser.email) {
-        alert('❌ You can only edit your own posts!');
+        alert('You can only edit your own posts!');
         return;
     }
     
@@ -374,23 +374,23 @@ function saveEdit() {
 
     // Validation
     if (!text) {
-        alert('❌ Post cannot be empty!');
+        alert('Post cannot be empty!');
         return;
     }
 
     if (text.length < 3) {
-        alert('❌ Post must be at least 3 characters long!');
+        alert('Post must be at least 3 characters long!');
         return;
     }
 
     if (text.length > 5000) {
-        alert('❌ Post is too long! Maximum 5000 characters allowed.');
+        alert('Post is too long! Maximum 5000 characters allowed.');
         return;
     }
 
     // Validate image URL if provided
     if (image && !isValidURL(image)) {
-        alert('❌ Please enter a valid image URL!');
+        alert('Please enter a valid image URL!');
         return;
     }
 
@@ -401,7 +401,7 @@ function saveEdit() {
         savePosts();
         renderPosts();
         closeEditModal();
-        alert('✅ Post updated successfully!');
+        alert('Post updated successfully!');
     }
 }
 
@@ -645,13 +645,13 @@ function handleImageUpload(event) {
 function handleImageFile(file) {
     // Validate file type
     if (!file.type.startsWith('image/')) {
-        alert('❌ Please upload an image file!');
+        alert('Please upload an image file!');
         return;
     }
     
     // Validate file size (5MB)
     if (file.size > 5 * 1024 * 1024) {
-        alert('❌ Image size must be less than 5MB!');
+        alert('Image size must be less than 5MB!');
         return;
     }
     
@@ -757,23 +757,23 @@ function createPost() {
 
     // Validation
     if (!text) {
-        alert('❌ Please write something in your post!');
+        alert('Please write something in your post!');
         return;
     }
 
     if (text.length < 3) {
-        alert('❌ Post must be at least 3 characters long!');
+        alert('Post must be at least 3 characters long!');
         return;
     }
 
     if (text.length > 5000) {
-        alert('❌ Post is too long! Maximum 5000 characters allowed.');
+        alert('Post is too long! Maximum 5000 characters allowed.');
         return;
     }
 
     // Validate image URL if provided and using URL tab
     if (currentUploadTab === 'url' && imageData && !isValidURL(imageData)) {
-        alert('❌ Please enter a valid image URL!');
+        alert('Please enter a valid image URL!');
         return;
     }
 
@@ -796,6 +796,6 @@ function createPost() {
     document.getElementById('postImage').value = '';
     removeImage();
 
-    alert('✅ Post created successfully!');
+    alert('Post created successfully!');
     renderPosts();
 }

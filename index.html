@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✨ SocialVibe - Mini Social Media</title>
+    <title>Mini Social Media</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Auth Screen -->
     <div id="authScreen" class="auth-screen">
         <div class="auth-container">
             <div class="auth-header">
-                <h1 class="gradient-text">✨ SocialVibe</h1>
+                <h1 class="gradient-text">Instagram</h1>
                 <p class="auth-subtitle">Connect, Share, Inspire</p>
             </div>
 
@@ -27,7 +29,7 @@
                 </div>
                 <button onclick="handleLogin()" class="btn-primary">Login</button>
                 <p class="auth-switch">
-                    Don't have an account? 
+                    Don't have an account?
                     <span onclick="toggleAuthForm()" class="link-text">Sign Up</span>
                 </p>
             </div>
@@ -38,20 +40,23 @@
                 <input type="text" id="signupName" placeholder="Full Name" class="input-field">
                 <input type="email" id="signupEmail" placeholder="Email" class="input-field">
                 <div class="password-field">
-                    <input type="password" id="signupPassword" placeholder="Password (min 6 characters)" class="input-field">
+                    <input type="password" id="signupPassword" placeholder="Password (min 6 characters)"
+                        class="input-field">
                     <button type="button" class="eye-btn" onclick="togglePasswordVisibility('signupPassword', this)">
                         <span class="eye-icon">🔒</span>
                     </button>
                 </div>
                 <div class="password-field">
-                    <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" class="input-field">
-                    <button type="button" class="eye-btn" onclick="togglePasswordVisibility('signupConfirmPassword', this)">
+                    <input type="password" id="signupConfirmPassword" placeholder="Confirm Password"
+                        class="input-field">
+                    <button type="button" class="eye-btn"
+                        onclick="togglePasswordVisibility('signupConfirmPassword', this)">
                         <span class="eye-icon">🔒</span>
                     </button>
                 </div>
                 <button onclick="handleSignup()" class="btn-primary">Sign Up</button>
                 <p class="auth-switch">
-                    Already have an account? 
+                    Already have an account?
                     <span onclick="toggleAuthForm()" class="link-text">Login</span>
                 </p>
             </div>
@@ -63,7 +68,7 @@
         <!-- Header -->
         <header class="header">
             <div class="header-content">
-                <h1 class="gradient-text">✨ SocialVibe</h1>
+                <h1 class="gradient-text">Instagram</h1>
                 <div class="header-actions">
                     <button onclick="toggleDarkMode()" class="icon-btn" id="themeBtn">
                         <span id="themeIcon">🌙</span>
@@ -83,31 +88,32 @@
             <div class="card create-post-card">
                 <div class="create-post-header">
                     <div class="user-avatar" id="postAvatar">A</div>
-                    <textarea id="postText" placeholder="What's on your mind? ✨" class="post-textarea"></textarea>
+                    <textarea id="postText" placeholder="What's on your mind?" class="post-textarea"></textarea>
                 </div>
-                
+
                 <div class="image-upload-section">
                     <div class="upload-tabs">
                         <button class="upload-tab active" onclick="switchUploadTab('url')">
-                            🔗 Image URL
+                            Image URL
                         </button>
                         <button class="upload-tab" onclick="switchUploadTab('file')">
-                            📤 Upload Image
+                            Upload Image
                         </button>
                     </div>
-                    
+
                     <div id="urlUpload" class="upload-content">
-                        <input type="url" id="postImage" placeholder="🖼️ Paste image URL" class="input-field">
+                        <input type="url" id="postImage" placeholder=" Paste image URL" class="input-field">
                     </div>
-                    
+
                     <div id="fileUpload" class="upload-content" style="display: none;">
                         <div class="drag-drop-area" id="dragDropArea">
-                            <input type="file" id="imageFileInput" accept="image/*" class="file-input" onchange="handleImageUpload(event)">
+                            <input type="file" id="imageFileInput" accept="image/*" class="file-input"
+                                onchange="handleImageUpload(event)">
                             <div class="drag-drop-content">
-                                <span class="upload-icon">📸</span>
                                 <p class="drag-text">Drag & Drop your image here</p>
                                 <p class="drag-subtext">or</p>
-                                <button type="button" class="btn-browse" onclick="document.getElementById('imageFileInput').click()">
+                                <button type="button" class="btn-browse"
+                                    onclick="document.getElementById('imageFileInput').click()">
                                     Browse Files
                                 </button>
                                 <p class="file-types">PNG, JPG, GIF up to 5MB</p>
@@ -117,19 +123,19 @@
                             <img id="previewImg" src="" alt="Preview">
                             <div class="preview-actions">
                                 <button type="button" class="btn-crop" onclick="openCropModal()">
-                                    ✂️ Crop Image
+                                    Crop Image
                                 </button>
                                 <button type="button" class="btn-remove" onclick="removeImage()">
-                                    ✕ Remove
+                                    Remove
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="create-post-footer">
                     <button onclick="createPost()" class="btn-primary">
-                        <span>📤</span> Post
+                        Post
                     </button>
                 </div>
             </div>
@@ -138,13 +144,14 @@
             <div class="card search-card">
                 <div class="search-filter-container">
                     <div class="search-box">
-                        <span class="search-icon">🔍</span>
-                        <input type="text" id="searchInput" placeholder="Search posts..." class="search-input" oninput="filterPosts()">
+
+                        <input type="text" id="searchInput" placeholder="Search posts..." class="search-input"
+                            oninput="filterPosts()">
                     </div>
                     <select id="sortSelect" class="select-field" onchange="filterPosts()">
-                        <option value="latest">🔥 Latest First</option>
-                        <option value="oldest">⏰ Oldest First</option>
-                        <option value="mostLiked">❤️ Most Liked</option>
+                        <option value="latest"> Latest First</option>
+                        <option value="oldest"> Oldest First</option>
+                        <option value="mostLiked"> Most Liked</option>
                     </select>
                 </div>
             </div>
@@ -163,8 +170,8 @@
             <textarea id="editText" class="post-textarea" rows="4"></textarea>
             <input type="url" id="editImage" placeholder="Image URL (optional)" class="input-field">
             <div class="modal-actions">
-                <button onclick="saveEdit()" class="btn-success">✓ Save</button>
-                <button onclick="closeEditModal()" class="btn-secondary">✕ Cancel</button>
+                <button onclick="saveEdit()" class="btn-success"> Save</button>
+                <button onclick="closeEditModal()" class="btn-secondary"> Cancel</button>
             </div>
         </div>
     </div>
@@ -183,12 +190,13 @@
                 <button onclick="flipCropImage('vertical')" class="btn-icon">⇅ Flip V</button>
             </div>
             <div class="modal-actions">
-                <button onclick="applyCrop()" class="btn-success">✓ Apply Crop</button>
-                <button onclick="closeCropModal()" class="btn-secondary">✕ Cancel</button>
+                <button onclick="applyCrop()" class="btn-success">Apply Crop</button>
+                <button onclick="closeCropModal()" class="btn-secondary">Cancel</button>
             </div>
         </div>
     </div>
 
     <script src="app.js"></script>
 </body>
+
 </html>
