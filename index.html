@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ SocialVibe - Mini Social Media</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Auth Screen -->
+    <div id="authScreen" class="auth-screen">
+        <div class="auth-container">
+            <div class="auth-header">
+                <h1 class="gradient-text">✨ SocialVibe</h1>
+                <p class="auth-subtitle">Connect, Share, Inspire</p>
+            </div>
+
+            <!-- Login Form -->
+            <div id="loginForm" class="auth-form">
+                <h2>Welcome Back</h2>
+                <input type="email" id="loginEmail" placeholder="Email" class="input-field">
+                <div class="password-field">
+                    <input type="password" id="loginPassword" placeholder="Password" class="input-field">
+                    <button type="button" class="eye-btn" onclick="togglePasswordVisibility('loginPassword', this)">
+                        <span class="eye-icon">🔒</span>
+                    </button>
+                </div>
+                <button onclick="handleLogin()" class="btn-primary">Login</button>
+                <p class="auth-switch">
+                    Don't have an account? 
+                    <span onclick="toggleAuthForm()" class="link-text">Sign Up</span>
+                </p>
+            </div>
+
+            <!-- Signup Form -->
+            <div id="signupForm" class="auth-form" style="display: none;">
+                <h2>Create Account</h2>
+                <input type="text" id="signupName" placeholder="Full Name" class="input-field">
+                <input type="email" id="signupEmail" placeholder="Email" class="input-field">
+                <div class="password-field">
+                    <input type="password" id="signupPassword" placeholder="Password (min 6 characters)" class="input-field">
+                    <button type="button" class="eye-btn" onclick="togglePasswordVisibility('signupPassword', this)">
+                        <span class="eye-icon">🔒</span>
+                    </button>
+                </div>
+                <div class="password-field">
+                    <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" class="input-field">
+                    <button type="button" class="eye-btn" onclick="togglePasswordVisibility('signupConfirmPassword', this)">
+                        <span class="eye-icon">🔒</span>
+                    </button>
+                </div>
+                <button onclick="handleSignup()" class="btn-primary">Sign Up</button>
+                <p class="auth-switch">
+                    Already have an account? 
+                    <span onclick="toggleAuthForm()" class="link-text">Login</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="mainApp" style="display: none;">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="gradient-text">✨ SocialVibe</h1>
+                <div class="header-actions">
+                    <button onclick="toggleDarkMode()" class="icon-btn" id="themeBtn">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+                    <div class="user-info">
+                        <div class="user-avatar" id="headerAvatar">A</div>
+                        <span class="user-name" id="headerUsername">User</span>
+                    </div>
+                    <button onclick="handleLogout()" class="btn-logout">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Create Post -->
+            <div class="card create-post-card">
+                <div class="create-post-header">
+                    <div class="user-avatar" id="postAvatar">A</div>
+                    <textarea id="postText" placeholder="What's on your mind? ✨" class="post-textarea"></textarea>
+                </div>
+                
+                <div class="image-upload-section">
+                    <div class="upload-tabs">
+                        <button class="upload-tab active" onclick="switchUploadTab('url')">
+                            🔗 Image URL
+                        </button>
+                        <button class="upload-tab" onclick="switchUploadTab('file')">
+                            📤 Upload Image
+                        </button>
+                    </div>
+                    
+                    <div id="urlUpload" class="upload-content">
+                        <input type="url" id="postImage" placeholder="🖼️ Paste image URL" class="input-field">
+                    </div>
+                    
+                    <div id="fileUpload" class="upload-content" style="display: none;">
+                        <div class="drag-drop-area" id="dragDropArea">
+                            <input type="file" id="imageFileInput" accept="image/*" class="file-input" onchange="handleImageUpload(event)">
+                            <div class="drag-drop-content">
+                                <span class="upload-icon">📸</span>
+                                <p class="drag-text">Drag & Drop your image here</p>
+                                <p class="drag-subtext">or</p>
+                                <button type="button" class="btn-browse" onclick="document.getElementById('imageFileInput').click()">
+                                    Browse Files
+                                </button>
+                                <p class="file-types">PNG, JPG, GIF up to 5MB</p>
+                            </div>
+                        </div>
+                        <div id="imagePreview" class="image-preview" style="display: none;">
+                            <img id="previewImg" src="" alt="Preview">
+                            <div class="preview-actions">
+                                <button type="button" class="btn-crop" onclick="openCropModal()">
+                                    ✂️ Crop Image
+                                </button>
+                                <button type="button" class="btn-remove" onclick="removeImage()">
+                                    ✕ Remove
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="create-post-footer">
+                    <button onclick="createPost()" class="btn-primary">
+                        <span>📤</span> Post
+                    </button>
+                </div>
+            </div>
+
+            <!-- Search and Filter -->
+            <div class="card search-card">
+                <div class="search-filter-container">
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="searchInput" placeholder="Search posts..." class="search-input" oninput="filterPosts()">
+                    </div>
+                    <select id="sortSelect" class="select-field" onchange="filterPosts()">
+                        <option value="latest">🔥 Latest First</option>
+                        <option value="oldest">⏰ Oldest First</option>
+                        <option value="mostLiked">❤️ Most Liked</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Posts Feed -->
+            <div id="postsFeed" class="posts-feed">
+                <!-- Posts will be rendered here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <h3>Edit Post</h3>
+            <textarea id="editText" class="post-textarea" rows="4"></textarea>
+            <input type="url" id="editImage" placeholder="Image URL (optional)" class="input-field">
+            <div class="modal-actions">
+                <button onclick="saveEdit()" class="btn-success">✓ Save</button>
+                <button onclick="closeEditModal()" class="btn-secondary">✕ Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Crop Modal -->
+    <div id="cropModal" class="modal">
+        <div class="modal-content crop-modal-content">
+            <h3>Crop Image</h3>
+            <div class="crop-container">
+                <img id="cropImage" src="" alt="Crop">
+            </div>
+            <div class="crop-controls">
+                <button onclick="rotateCropImage(-90)" class="btn-icon">↶ Rotate Left</button>
+                <button onclick="rotateCropImage(90)" class="btn-icon">↷ Rotate Right</button>
+                <button onclick="flipCropImage('horizontal')" class="btn-icon">⇄ Flip H</button>
+                <button onclick="flipCropImage('vertical')" class="btn-icon">⇅ Flip V</button>
+            </div>
+            <div class="modal-actions">
+                <button onclick="applyCrop()" class="btn-success">✓ Apply Crop</button>
+                <button onclick="closeCropModal()" class="btn-secondary">✕ Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
